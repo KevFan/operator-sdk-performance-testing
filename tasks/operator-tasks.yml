@@ -79,14 +79,14 @@
 #   set_fact:
 #     memcached_cr_count: "{{ memcached_cr_count + 1 }}"
 
-- name: Delete the {{ operator_type }} pod so it restarts.
-  k8s:
-    state: absent
-    api_version: v1
-    kind: Pod
-    name: "{{ operator_pod.resources[0].metadata.name }}"
-    namespace: memcached-operator-system
-    wait: false
+# - name: Delete the {{ operator_type }} pod so it restarts.
+#   k8s:
+#     state: absent
+#     api_version: v1
+#     kind: Pod
+#     name: "{{ operator_pod.resources[0].metadata.name }}"
+#     namespace: memcached-operator-system
+#     wait: false
 
 - name: Deploy {{ memcached_cr_count }} {{ operator_type }} memcached CRs.
   k8s:

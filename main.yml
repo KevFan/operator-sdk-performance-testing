@@ -30,6 +30,9 @@
     - name: Deploy prometheus-operator (required for metrics service).
       include_tasks: tasks/prometheus-operator.yml
 
+    - name: Deploy metrics server.
+      include_tasks: tasks/metrics.yml
+
     - name: Build, deploy, benchmark, and undeploy operators.
       include_tasks: tasks/operator-tasks.yml
       loop: ["{{ operator_under_test }}"]

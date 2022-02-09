@@ -1,0 +1,17 @@
+---
+- name: Download metrics server manifests
+  get_url:
+    url: https://gist.githubusercontent.com/KevFan/c647f9c0eed5dbc5136d6dc8a3d05ca5/raw/0708944577bd3ce13d3993c4a598fb3e4b0d6554/metrics-server-insecure.yaml
+    dest: /tmp/metrics-server.yaml
+    mode: 0644
+
+- name: Deploy metrics service into the cluster.
+  k8s:
+    state: present
+    src: /tmp/metrics-server.yaml
+    wait: true
+
+# - name: Delete prometheus-operator manifest.
+#   file:
+#     path: /tmp/prometheus-operator.yaml
+#     state: absent
