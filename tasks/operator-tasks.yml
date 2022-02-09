@@ -75,9 +75,9 @@
   changed_when: false
 
 # Benchmark 2: Kill Operator Pod, benchmark re-reconciliation.
-- name: Add one more CR to the count.
-  set_fact:
-    memcached_cr_count: "{{ memcached_cr_count + 1 }}"
+# - name: Add one more CR to the count.
+#   set_fact:
+#     memcached_cr_count: "{{ memcached_cr_count + 1 }}"
 
 - name: Delete the {{ operator_type }} pod so it restarts.
   k8s:
