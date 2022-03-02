@@ -13,11 +13,7 @@
       apiVersion: v1
       kind: ServiceAccount
       metadata:
-        labels:
-          app.kubernetes.io/component: controller
-          app.kubernetes.io/name: prometheus-operator
-          app.kubernetes.io/version: v0.41.1
-        name: prometheus-operator
+        name: prometheus
         namespace: default
 
 - name: Manually create the prometheus-operator cluster role
@@ -28,7 +24,6 @@
       kind: ClusterRole
       metadata:
         name: prometheus
-        namespace: default
       rules:
       - apiGroups: [""]
         resources:
@@ -58,7 +53,6 @@
       kind: ClusterRoleBinding
       metadata:
         name: prometheus
-        namespace: default
       roleRef:
         apiGroup: rbac.authorization.k8s.io
         kind: ClusterRole
