@@ -20,11 +20,78 @@
         name: prometheus-operator
         namespace: default
 
+- name: Manually create the prometheus-operator cluster role
+  k8s:
+    state: present
+    definition:
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRole
+      metadata:
+        name: prometheus
+        namespace: default
+      rules:
+      - apiGroups: [""]
+        resources:
+        - nodes
+        - nodes/metrics
+        - services
+        - endpoints
+        - pods
+        verbs: ["get", "list", "watch"]
+      - apiGroups: [""]
+        resources:
+        - configmaps
+        verbs: ["get"]
+      - apiGroups:
+        - networking.k8s.io
+        resources:
+        - ingresses
+        verbs: ["get", "list", "watch"]
+      - nonResourceURLs: ["/metrics"]
+        verbs: ["get"]
+
+- name: Manually create the prometheus-operator cluster role binding
+  k8s:
+    state: present
+    definition:
+      apiVersion: rbac.authorization.k8s.io/v1
+      kind: ClusterRoleBinding
+      metadata:
+        name: prometheus
+        namespace: default
+      roleRef:
+        apiGroup: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: prometheus
+      subjects:
+      - kind: ServiceAccount
+        name: prometheus
+        namespace: default
+
+
 - name: Deploy prometheus-operator into the cluster.
   k8s:
     state: present
     src: /tmp/prometheus-operator.yaml
     wait: true
+
+- name: Deploy the prometheus CR
+  k8s:
+    state: present
+    definition:
+      apiVersion: monitoring.coreos.com/v1
+      kind: Prometheus
+      metadata:
+        name: prometheus
+        namespace: default
+      spec:
+        serviceAccountName: prometheus
+        serviceMonitorNamespaceSelector: {}
+        serviceMonitorSelector: {}
+        podMonitorSelector: {}
+        resources:
+          requests:
+            memory: 400Mi
 
 - name: Delete prometheus-operator manifest.
   file:
