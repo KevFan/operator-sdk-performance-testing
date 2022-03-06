@@ -91,7 +91,7 @@
           requests:
             memory: 400Mi
 
-- name: Delete prometheus-operator manifest.
-  file:
-    path: /tmp/prometheus-operator.yaml
-    state: absent
+# - name: Delete prometheus-operator manifest.
+#   file:
+#     path: /tmp/prometheus-operator.yaml
+#     state: absent
