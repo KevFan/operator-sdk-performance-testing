@@ -20,6 +20,16 @@
         name: prometheus-operator
         namespace: default
 
+- name: Manually create the prometheus ServiceAccount.
+  k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: ServiceAccount
+      metadata:
+        name: prometheus
+        namespace: default
+
 - name: Manually create the prometheus-operator cluster role
   k8s:
     state: present
