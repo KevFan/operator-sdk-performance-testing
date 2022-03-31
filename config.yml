@@ -24,5 +24,8 @@ image_tag: 1h
 
 # Versions for cluster addons.
 cert_manager_version: v0.16.1
-prometheus_operator_version: v0.41.1
+prometheus_operator_version: v0.49.0
 metrics_server_version: v0.3.7
+
+# Which sort of test to run.
+test: "{{ lookup('env', 'TEST') | default('spike') }}"

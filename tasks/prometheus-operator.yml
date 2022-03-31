@@ -83,6 +83,12 @@
     src: /tmp/prometheus-operator.yaml
     wait: true
 
+- name: Deploy additional-scrape-configs into the cluster.
+  k8s:
+    state: present
+    src: /home/kevinfan/additional-scrape-configs.yaml
+    wait: true
+
 - name: Deploy the prometheus CR
   k8s:
     state: present
@@ -93,6 +99,9 @@
         name: prometheus
         namespace: default
       spec:
+        additionalScrapeConfigs:
+          key: prometheus-additional.yaml
+          name: additional-scrape-configs
         serviceAccountName: prometheus
         serviceMonitorNamespaceSelector: {}
         serviceMonitorSelector: {}

@@ -33,8 +33,16 @@
     - name: Deploy metrics server.
       include_tasks: tasks/metrics.yml
 
-    - name: Build, deploy, benchmark, and undeploy operators.
+    - name: SPIKE TEST -  Build, deploy, benchmark, and undeploy operators.
       include_tasks: tasks/operator-tasks.yml
       loop: ["{{ operator_under_test }}"]
       loop_control:
         loop_var: operator_type
+      when: "'spike' == test"
+
+    - name: LOAD TEST - Build, deploy, benchmark, and undeploy operators.
+      include_tasks: tasks/operator-tasks-load.yml
+      loop: ["{{ operator_under_test }}"]
+      loop_control:
+        loop_var: operator_type
+      when: "'load' == test"
