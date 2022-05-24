@@ -1,0 +1,56 @@
+COMMAND: set -e
+yamllint .
+
+[35m[DEPRECATION WARNING]: [defaults]callback_whitelist option, normalizing names [0m
+[35mto new standard, use callbacks_enabled instead. This feature will be removed [0m
+[35mfrom ansible-core in version 2.15. Deprecation warnings can be disabled by [0m
+[35msetting deprecation_warnings=False in ansible.cfg.[0m
+
+PLAY [Destroy] *****************************************************************
+
+PLAY RECAP *********************************************************************
+
+Tuesday 24 May 2022  20:14:06 +0100 (0:00:00.045)       0:00:00.045 ***********
+===============================================================================
+[35m[DEPRECATION WARNING]: [defaults]callback_whitelist option, normalizing names [0m
+[35mto new standard, use callbacks_enabled instead. This feature will be removed [0m
+[35mfrom ansible-core in version 2.15. Deprecation warnings can be disabled by [0m
+[35msetting deprecation_warnings=False in ansible.cfg.[0m
+
+PLAY [Create] ******************************************************************
+
+TASK [Create test kind cluster] ************************************************
+Tuesday 24 May 2022  20:14:06 +0100 (0:00:00.008)       0:00:00.008 ***********
+[33mchanged: [localhost][0m
+
+TASK [Ensure ~/.kube directory exists.] ****************************************
+Tuesday 24 May 2022  20:14:33 +0100 (0:00:26.393)       0:00:26.401 ***********
+[32mok: [localhost][0m
+
+TASK [Copy kubeconfig into ~/.kube as well.] ***********************************
+Tuesday 24 May 2022  20:14:33 +0100 (0:00:00.268)       0:00:26.670 ***********
+[33mchanged: [localhost][0m
+
+PLAY RECAP *********************************************************************
+[33mlocalhost[0m                  : [32mok=3   [0m [33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+Tuesday 24 May 2022  20:14:33 +0100 (0:00:00.277)       0:00:26.948 ***********
+===============================================================================
+Create test kind cluster ----------------------------------------------- 26.39s
+Ensure ~/.kube directory exists. ---------------------------------------- 0.27s
+Copy kubeconfig into ~/.kube as well. ----------------------------------- 0.28s
+[35m[DEPRECATION WARNING]: [defaults]callback_whitelist option, normalizing names [0m
+[35mto new standard, use callbacks_enabled instead. This feature will be removed [0m
+[35mfrom ansible-core in version 2.15. Deprecation warnings can be disabled by [0m
+[35msetting deprecation_warnings=False in ansible.cfg.[0m
+
+PLAY [Converge] ****************************************************************
+
+PLAY [localhost] ***************************************************************
+
+TASK [Clone the operator-sdk project.] *****************************************
+Tuesday 24 May 2022  20:14:34 +0100 (0:00:00.017)       0:00:00.017 ***********
+[33mchanged: [localhost][0m
+
+TASK [Attempt to fix file permissions.] ****************************************
+Tuesday 24 May 2022  20:14:37 +0100 (0:00:03.534)       0:00:03.551 ***********

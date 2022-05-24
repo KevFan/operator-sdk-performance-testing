@@ -42,6 +42,7 @@
       - apiGroups: [""]
         resources:
         - nodes
+        - nodes/proxy
         - nodes/metrics
         - services
         - endpoints
@@ -109,6 +110,7 @@
         resources:
           requests:
             memory: 400Mi
+        scrapeInterval: 1s
 
 # - name: Delete prometheus-operator manifest.
 #   file:

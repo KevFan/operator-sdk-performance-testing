@@ -1,0 +1,348 @@
+COMMAND: set -e
+yamllint .
+
+[35m[DEPRECATION WARNING]: [defaults]callback_whitelist option, normalizing names [0m
+[35mto new standard, use callbacks_enabled instead. This feature will be removed [0m
+[35mfrom ansible-core in version 2.15. Deprecation warnings can be disabled by [0m
+[35msetting deprecation_warnings=False in ansible.cfg.[0m
+
+PLAY [Destroy] *****************************************************************
+
+PLAY RECAP *********************************************************************
+
+Tuesday 17 May 2022  22:42:56 +0100 (0:00:00.028)       0:00:00.028 ***********
+===============================================================================
+[35m[DEPRECATION WARNING]: [defaults]callback_whitelist option, normalizing names [0m
+[35mto new standard, use callbacks_enabled instead. This feature will be removed [0m
+[35mfrom ansible-core in version 2.15. Deprecation warnings can be disabled by [0m
+[35msetting deprecation_warnings=False in ansible.cfg.[0m
+
+PLAY [Create] ******************************************************************
+
+TASK [Create test kind cluster] ************************************************
+Tuesday 17 May 2022  22:42:56 +0100 (0:00:00.008)       0:00:00.008 ***********
+[33mchanged: [localhost][0m
+
+TASK [Ensure ~/.kube directory exists.] ****************************************
+Tuesday 17 May 2022  22:43:21 +0100 (0:00:24.854)       0:00:24.862 ***********
+[32mok: [localhost][0m
+
+TASK [Copy kubeconfig into ~/.kube as well.] ***********************************
+Tuesday 17 May 2022  22:43:21 +0100 (0:00:00.253)       0:00:25.116 ***********
+[33mchanged: [localhost][0m
+
+PLAY RECAP *********************************************************************
+[33mlocalhost[0m                  : [32mok=3   [0m [33mchanged=2   [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+Tuesday 17 May 2022  22:43:21 +0100 (0:00:00.271)       0:00:25.387 ***********
+===============================================================================
+Create test kind cluster ----------------------------------------------- 24.85s
+Ensure ~/.kube directory exists. ---------------------------------------- 0.25s
+Copy kubeconfig into ~/.kube as well. ----------------------------------- 0.27s
+[35m[DEPRECATION WARNING]: [defaults]callback_whitelist option, normalizing names [0m
+[35mto new standard, use callbacks_enabled instead. This feature will be removed [0m
+[35mfrom ansible-core in version 2.15. Deprecation warnings can be disabled by [0m
+[35msetting deprecation_warnings=False in ansible.cfg.[0m
+
+PLAY [Converge] ****************************************************************
+
+PLAY [localhost] ***************************************************************
+
+TASK [Clone the operator-sdk project.] *****************************************
+Tuesday 17 May 2022  22:43:22 +0100 (0:00:00.018)       0:00:00.018 ***********
+[33mchanged: [localhost][0m
+
+TASK [Attempt to fix file permissions.] ****************************************
+Tuesday 17 May 2022  22:43:25 +0100 (0:00:02.861)       0:00:02.880 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy a memcached DaemonSet so image is pulled to all nodes.] ***********
+Tuesday 17 May 2022  22:43:31 +0100 (0:00:06.505)       0:00:09.385 ***********
+[36mincluded: /home/kevinfan/dev/operator-sdk-performance-testing/tasks/memcached-daemonset.yml for localhost[0m
+
+TASK [Create a Memcached DaemonSet.] *******************************************
+Tuesday 17 May 2022  22:43:31 +0100 (0:00:00.015)       0:00:09.401 ***********
+[33mchanged: [localhost][0m
+
+TASK [Delete the Memcached DaemonSet.] *****************************************
+Tuesday 17 May 2022  22:43:52 +0100 (0:00:20.681)       0:00:30.082 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy cert-manager (required for Go operator).] *************************
+Tuesday 17 May 2022  22:43:53 +0100 (0:00:00.492)       0:00:30.575 ***********
+[36mskipping: [localhost][0m
+
+TASK [Deploy prometheus-operator (required for metrics service).] **************
+Tuesday 17 May 2022  22:43:53 +0100 (0:00:00.023)       0:00:30.599 ***********
+[36mincluded: /home/kevinfan/dev/operator-sdk-performance-testing/tasks/prometheus-operator.yml for localhost[0m
+
+TASK [Download prometheus-operator manifest.] **********************************
+Tuesday 17 May 2022  22:43:53 +0100 (0:00:00.018)       0:00:30.618 ***********
+[32mok: [localhost][0m
+
+TASK [Manually create the prometheus-operator ServiceAccount.] *****************
+Tuesday 17 May 2022  22:43:54 +0100 (0:00:01.476)       0:00:32.094 ***********
+[33mchanged: [localhost][0m
+
+TASK [Manually create the prometheus ServiceAccount.] **************************
+Tuesday 17 May 2022  22:43:55 +0100 (0:00:00.480)       0:00:32.575 ***********
+[33mchanged: [localhost][0m
+
+TASK [Manually create the prometheus-operator cluster role] ********************
+Tuesday 17 May 2022  22:43:55 +0100 (0:00:00.471)       0:00:33.047 ***********
+[33mchanged: [localhost][0m
+
+TASK [Manually create the prometheus-operator cluster role binding] ************
+Tuesday 17 May 2022  22:43:56 +0100 (0:00:00.476)       0:00:33.523 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy prometheus-operator into the cluster.] ****************************
+Tuesday 17 May 2022  22:43:56 +0100 (0:00:00.484)       0:00:34.008 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy additional-scrape-configs into the cluster.] **********************
+Tuesday 17 May 2022  22:44:09 +0100 (0:00:13.116)       0:00:47.125 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy the prometheus CR] ************************************************
+Tuesday 17 May 2022  22:44:10 +0100 (0:00:00.481)       0:00:47.607 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy metrics server.] **************************************************
+Tuesday 17 May 2022  22:44:10 +0100 (0:00:00.498)       0:00:48.105 ***********
+[36mincluded: /home/kevinfan/dev/operator-sdk-performance-testing/tasks/metrics.yml for localhost[0m
+
+TASK [Download metrics server manifests] ***************************************
+Tuesday 17 May 2022  22:44:10 +0100 (0:00:00.020)       0:00:48.126 ***********
+[32mok: [localhost][0m
+
+TASK [Deploy metrics service into the cluster.] ********************************
+Tuesday 17 May 2022  22:44:11 +0100 (0:00:00.678)       0:00:48.804 ***********
+[33mchanged: [localhost][0m
+
+TASK [Download metrics server cluster role] ************************************
+Tuesday 17 May 2022  22:44:51 +0100 (0:00:40.675)       0:01:29.479 ***********
+[32mok: [localhost][0m
+
+TASK [Download metrics server cluster role binding] ****************************
+Tuesday 17 May 2022  22:44:54 +0100 (0:00:02.416)       0:01:31.896 ***********
+[32mok: [localhost][0m
+
+TASK [Download metrics server deployment] **************************************
+Tuesday 17 May 2022  22:44:56 +0100 (0:00:02.087)       0:01:33.983 ***********
+[32mok: [localhost][0m
+
+TASK [Download metrics server service account] *********************************
+Tuesday 17 May 2022  22:44:57 +0100 (0:00:00.962)       0:01:34.946 ***********
+[32mok: [localhost][0m
+
+TASK [Download metrics server service] *****************************************
+Tuesday 17 May 2022  22:44:58 +0100 (0:00:00.970)       0:01:35.916 ***********
+[32mok: [localhost][0m
+
+TASK [Deploy metrics server cluster role] **************************************
+Tuesday 17 May 2022  22:44:59 +0100 (0:00:00.949)       0:01:36.866 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy metrics server cluster role binding] ******************************
+Tuesday 17 May 2022  22:44:59 +0100 (0:00:00.508)       0:01:37.375 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy metrics server service account] ***********************************
+Tuesday 17 May 2022  22:45:00 +0100 (0:00:00.512)       0:01:37.887 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy metrics server deployment] ****************************************
+Tuesday 17 May 2022  22:45:00 +0100 (0:00:00.517)       0:01:38.404 ***********
+[33mchanged: [localhost][0m
+
+TASK [Deploy metrics server service] *******************************************
+Tuesday 17 May 2022  22:45:26 +0100 (0:00:25.540)       0:02:03.945 ***********
+[33mchanged: [localhost][0m
+
+TASK [SPIKE TEST -  Build, deploy, benchmark, and undeploy operators.] *********
+Tuesday 17 May 2022  22:45:26 +0100 (0:00:00.494)       0:02:04.439 ***********
+[36mincluded: /home/kevinfan/dev/operator-sdk-performance-testing/tasks/operator-tasks.yml for localhost => (item=ansible)[0m
+
+TASK [Set the ansible memcached operator image name.] **************************
+Tuesday 17 May 2022  22:45:26 +0100 (0:00:00.043)       0:02:04.483 ***********
+[32mok: [localhost][0m
+
+TASK [Set the app label selector for Helm.] ************************************
+Tuesday 17 May 2022  22:45:26 +0100 (0:00:00.012)       0:02:04.496 ***********
+[36mskipping: [localhost][0m
+
+TASK [Ensure the operator namespace exists.] ***********************************
+Tuesday 17 May 2022  22:45:26 +0100 (0:00:00.010)       0:02:04.506 ***********
+[33mchanged: [localhost][0m
+
+TASK [Set the correct subdirectory for the Go operator example.] ***************
+Tuesday 17 May 2022  22:45:27 +0100 (0:00:00.483)       0:02:04.990 ***********
+[36mskipping: [localhost][0m
+
+TASK [Build, push, and deploy the ansible memcached operator.] *****************
+Tuesday 17 May 2022  22:45:27 +0100 (0:00:00.011)       0:02:05.001 ***********
+[33mchanged: [localhost] => (item=docker build . -t $IMG)[0m
+[33mchanged: [localhost] => (item=make docker-push)[0m
+[33mchanged: [localhost] => (item=make install)[0m
+[33mchanged: [localhost] => (item=make deploy)[0m
+
+TASK [Wait for Operator Pod to be 'Running'.] **********************************
+Tuesday 17 May 2022  22:45:36 +0100 (0:00:08.960)       0:02:13.962 ***********
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (15 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (14 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (13 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (12 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (11 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (10 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (9 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (8 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (7 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (6 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (5 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (4 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (3 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (2 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: Wait for Operator Pod to be 'Running'. (1 retries left).[0m
+[32mok: [localhost][0m
+
+TASK [Pause to allow cluster to stabilize.] ************************************
+Tuesday 17 May 2022  22:46:29 +0100 (0:00:53.099)       0:03:07.062 ***********
+Pausing for 10 seconds
+(ctrl+C then 'C' = continue early, ctrl+C then 'A' = abort)
+[32mok: [localhost][0m
+
+TASK [Deploy 15 ansible memcached CRs.] ****************************************
+Tuesday 17 May 2022  22:46:39 +0100 (0:00:10.011)       0:03:17.074 ***********
+[33mchanged: [localhost][0m
+
+TASK [[B1] Wait for 15 ansible Memcached Pods to be running.] ******************
+Tuesday 17 May 2022  22:46:40 +0100 (0:00:00.579)       0:03:17.653 ***********
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (120 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (119 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (118 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (117 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (116 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (115 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (114 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (113 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (112 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (111 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (110 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (109 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (108 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (107 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (106 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (105 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (104 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (103 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (102 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (101 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (100 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (99 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (98 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (97 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (96 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (95 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (94 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (93 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (92 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (91 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (90 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (89 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (88 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (87 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (86 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (85 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (84 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (83 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (82 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (81 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (80 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (79 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (78 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (77 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (76 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B1] Wait for 15 ansible Memcached Pods to be running. (75 retries left).[0m
+[32mok: [localhost][0m
+
+TASK [[B1] Wait for ansible Memcached Pods to be ready.] ***********************
+Tuesday 17 May 2022  22:49:22 +0100 (0:02:42.114)       0:05:59.767 ***********
+[32mok: [localhost][0m
+
+TASK [Deploy 15 ansible memcached CRs.] ****************************************
+Tuesday 17 May 2022  22:49:24 +0100 (0:00:02.415)       0:06:02.182 ***********
+[32mok: [localhost][0m
+
+TASK [[B2] Wait for 15 ansible Memcached Pods to be running.] ******************
+Tuesday 17 May 2022  22:49:25 +0100 (0:00:00.690)       0:06:02.873 ***********
+[32mok: [localhost][0m
+
+TASK [Un-deploy 15 ansible memcached CRs.] *************************************
+Tuesday 17 May 2022  22:49:25 +0100 (0:00:00.607)       0:06:03.481 ***********
+[33mchanged: [localhost][0m
+
+TASK [[B3] Wait for all ansible Memcached Pods to be gone.] ********************
+Tuesday 17 May 2022  22:49:26 +0100 (0:00:00.720)       0:06:04.201 ***********
+[1;30mFAILED - RETRYING: [localhost]: [B3] Wait for all ansible Memcached Pods to be gone. (120 retries left).[0m
+[1;30mFAILED - RETRYING: [localhost]: [B3] Wait for all ansible Memcached Pods to be gone. (119 retries left).[0m
+[32mok: [localhost][0m
+
+TASK [Undeploy the ansible memcached operator.] ********************************
+Tuesday 17 May 2022  22:49:38 +0100 (0:00:11.590)       0:06:15.792 ***********
+[33mchanged: [localhost][0m
+
+TASK [LOAD TEST - Build, deploy, benchmark, and undeploy operators.] ***********
+Tuesday 17 May 2022  22:49:38 +0100 (0:00:00.282)       0:06:16.074 ***********
+[36mskipping: [localhost] => (item=ansible) [0m
+
+PLAY RECAP *********************************************************************
+[33mlocalhost[0m                  : [32mok=41  [0m [33mchanged=22  [0m unreachable=0    failed=0    [36mskipped=4   [0m rescued=0    ignored=0
+
+Tuesday 17 May 2022  22:49:38 +0100 (0:00:00.029)       0:06:16.104 ***********
+===============================================================================
+Clone the operator-sdk project. ----------------------------------------- 2.86s
+Attempt to fix file permissions. ---------------------------------------- 6.51s
+Deploy a memcached DaemonSet so image is pulled to all nodes. ----------- 0.02s
+Create a Memcached DaemonSet. ------------------------------------------ 20.68s
+Delete the Memcached DaemonSet. ----------------------------------------- 0.49s
+Deploy cert-manager (required for Go operator). ------------------------- 0.02s
+Deploy prometheus-operator (required for metrics service). -------------- 0.02s
+Download prometheus-operator manifest. ---------------------------------- 1.48s
+Manually create the prometheus-operator ServiceAccount. ----------------- 0.48s
+Manually create the prometheus ServiceAccount. -------------------------- 0.47s
+Manually create the prometheus-operator cluster role -------------------- 0.48s
+Manually create the prometheus-operator cluster role binding ------------ 0.48s
+Deploy prometheus-operator into the cluster. --------------------------- 13.12s
+Deploy additional-scrape-configs into the cluster. ---------------------- 0.48s
+Deploy the prometheus CR ------------------------------------------------ 0.50s
+Deploy metrics server. -------------------------------------------------- 0.02s
+Download metrics server manifests --------------------------------------- 0.68s
+Deploy metrics service into the cluster. ------------------------------- 40.68s
+Download metrics server cluster role ------------------------------------ 2.42s
+Download metrics server cluster role binding ---------------------------- 2.09s
+Download metrics server deployment -------------------------------------- 0.96s
+Download metrics server service account --------------------------------- 0.97s
+Download metrics server service ----------------------------------------- 0.95s
+Deploy metrics server cluster role -------------------------------------- 0.51s
+Deploy metrics server cluster role binding ------------------------------ 0.51s
+Deploy metrics server service account ----------------------------------- 0.52s
+Deploy metrics server deployment --------------------------------------- 25.54s
+Deploy metrics server service ------------------------------------------- 0.49s
+SPIKE TEST -  Build, deploy, benchmark, and undeploy operators. --------- 0.04s
+Set the ansible memcached operator image name. -------------------------- 0.01s
+Set the app label selector for Helm. ------------------------------------ 0.01s
+Ensure the operator namespace exists. ----------------------------------- 0.48s
+Set the correct subdirectory for the Go operator example. --------------- 0.01s
+Build, push, and deploy the ansible memcached operator. ----------------- 8.96s
+Wait for Operator Pod to be 'Running'. --------------------------------- 53.10s
+Pause to allow cluster to stabilize. ----------------------------------- 10.01s
+Deploy 15 ansible memcached CRs. ---------------------------------------- 0.58s
+[B1] Wait for 15 ansible Memcached Pods to be running. ---------------- 162.11s
+[B1] Wait for ansible Memcached Pods to be ready. ----------------------- 2.42s
+Deploy 15 ansible memcached CRs. ---------------------------------------- 0.69s
+[B2] Wait for 15 ansible Memcached Pods to be running. ------------------ 0.61s
+Un-deploy 15 ansible memcached CRs. ------------------------------------- 0.72s
+[B3] Wait for all ansible Memcached Pods to be gone. ------------------- 11.59s
+Undeploy the ansible memcached operator. -------------------------------- 0.28s
+LOAD TEST - Build, deploy, benchmark, and undeploy operators. ----------- 0.03s
