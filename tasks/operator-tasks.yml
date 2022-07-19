@@ -49,7 +49,7 @@
 
 - name: Pause to allow cluster to stabilize.
   pause:
-    seconds: 10
+    seconds: 120
 
 # Benchmark 1: Deploy Memcached CRs.
 - name: Deploy {{ memcached_cr_count }} {{ operator_type }} memcached CRs.

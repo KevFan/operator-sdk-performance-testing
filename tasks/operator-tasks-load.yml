@@ -49,7 +49,7 @@
 
 - name: Pause to allow cluster to stabilize.
   pause:
-    seconds: 10
+    seconds: 120
 
 - name: Perform load 
   include_tasks: load.yml
